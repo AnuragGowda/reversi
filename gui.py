@@ -3,8 +3,8 @@ from time import sleep
 
 from game2dboard import Board as BoardUI
 
-from game import run_game
-from main import Board, Agent
+# from game import run_game
+from main import Board, AlphaBetaAgent
 
 b = BoardUI(8, 14)
 b.create_output()
@@ -60,7 +60,8 @@ def match_board(_board=None):
 
 match_board()
 
-
+def mark_best(move):
+    pass
 def mouse_fn(btn, row, col):
     global board
 
@@ -70,7 +71,7 @@ def mouse_fn(btn, row, col):
     match_board()
 
 
-agent = Agent()
+agent = AlphaBetaAgent()
 
 
 def make_move(move):
@@ -121,8 +122,8 @@ def key_fn(key):
         board = board.make_move(move)
         match_board()
 
-    elif key == "c":
-        run_game(board, match_board, sleep_ui)
+    # elif key == "c":
+    #     run_game(board, match_board, sleep_ui)
     elif key == "left":
         board_index -= 1
         board = board_list[board_index]
