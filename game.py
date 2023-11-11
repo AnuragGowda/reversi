@@ -15,7 +15,9 @@ class Game:
     def best_move(self):
         agent = agentA if self.board.player == 1 else agentB
         move = agent.best_move(self.board)
-        assert move is not None
+        if move is None:
+            assert self.board.valid_moves()
+            assert move is not None
         return move
 
     def run_game(self):
@@ -67,6 +69,7 @@ if __name__ == "__main__":
         winner = current_game.run_game()
         wins[winner] += 1
         print(wins)
+
     # game = Game(agentA, agentB, original_board)
 
     # game.run_game_ui()

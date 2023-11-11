@@ -36,17 +36,18 @@ def sleep_ui(ms):
     b.pause(ms)
 
 
-def match_board(_board=None):
-    global board
-    if _board is not None:
-        board = _board
+def match_board(board):
+    # global board
+    # if _board is not None:
+    #     board = _board
     for i in range(8):
         for j in range(14):
-            if not board.is_in_bounds(i, j):
+            board.is_valid_move((i, j))
+            if not board.is_in_bounds((i, j)):
                 b[i][j] = "oob"
-            elif board.board[i][j] == 1:
+            elif board.get_cell((i, j)) == 1:
                 b[i][j] = "white"
-            elif board.board[i][j] == 2:
+            elif board.get_cell((i, j)) == 2:
                 b[i][j] = "black"
             elif board.player == 1 and board.is_valid_move((i, j)):
                 b[i][j] = "white_next"
@@ -57,8 +58,7 @@ def match_board(_board=None):
     b.print(board.count_score())
     if board.game_over:
         b.print("Game over", board.winner, "won", board.count_score())
-
-match_board()
+# match_board()
 
 def mark_best(move):
     pass

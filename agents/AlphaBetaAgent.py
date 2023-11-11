@@ -40,8 +40,9 @@ class AlphaBetaAgent:
         for move in board.valid_moves():
             next_board = board.make_move(move)
             if next_board.player == board.player:
-                next_board.player = next_board.get_opponent()
-            evaluation, _ = self.search(next_board, -beta, -alpha, depth - 1)
+                evaluation, _ = self.search(next_board, alpha, beta, depth - 1)
+            else:
+                evaluation, _ = self.search(next_board, -beta, -alpha, depth - 1)
             if self.time_up:
                 return None, None
             evaluation *= -1
@@ -73,6 +74,7 @@ class AlphaBetaAgent:
 
         if best_move is None:
             return random.choice(board.valid_moves())
+        return best_move
 
     def evaluate(self, boardObj):
         board = boardObj.board

@@ -1,4 +1,4 @@
-# The Undergraduate Undergraduates: Gary Peng (118730745), Anurag Gowda (119005323), Karth
+# The Undergraduate Undergraduates: Gary Peng (118730745), Anurag Gowda (119005323), Karthikeya Kona (117933048)
 
 
 from agents.AlphaBetaAgent import AlphaBetaAgent
@@ -12,5 +12,5 @@ if __name__ == "__main__":
     board = Board()
     board.read_board()
     agent = AlphaBetaAgent()
-    _, move = agent.best_move(board)
+    move = agent.best_move(board)
     print(move[0] + 1, move[1] - offsets[move[0]] + 1)
